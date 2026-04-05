@@ -1,270 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080809">
-  <meta name="description" content="Hive — Native macOS app for orchestrating multiple AI agents that work together as a team.">
-  <title>Hive — AI Agent Orchestration for macOS</title>
-  <link rel="icon" type="image/png" href="assets/icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hive — Native macOS AI Agent Orchestrator</title>
+  <meta name="description" content="Deploy colonies of specialized AI agents that work together. Automatically routing tasks, managing context, and shipping results." />
+  <meta property="og:title" content="Hive — Orchestrate your AI workforce" />
+  <meta property="og:description" content="Deploy colonies of specialized AI agents that work together on macOS." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav" aria-label="Main navigation">
-    <div class="nav__inner">
-      <a href="#" class="nav__brand" aria-label="Hive home">
-        <img src="assets/icon.png" alt="" class="nav__icon" width="28" height="28" aria-hidden="true">
-        <span class="nav__wordmark">HIVE</span>
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand" aria-label="Hive home">
+        <img src="assets/icon-512.png" alt="Hive app icon" class="nav-icon" width="20" height="20" />
+        <span class="nav-wordmark">Hive</span>
       </a>
-      <div class="nav__actions">
-        <a href="https://github.com/pauljrob/hive" class="nav__link nav__link--github" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://github.com/pauljrob/hive/releases" class="btn btn--outline btn--sm" target="_blank" rel="noopener noreferrer">Download</a>
+      <div class="nav-actions">
+        <a href="https://github.com/pauljrob/hive" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+        <a href="#download" class="btn btn-nav">Download</a>
       </div>
     </div>
   </nav>
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-headline">
-      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
-      <div class="hero__static-fallback" aria-hidden="true"></div>
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section id="hero" class="section-hero" aria-label="Hero">
 
-      <div class="container hero__content">
-        <div class="hero__center">
-          <img
-            src="assets/icon.png"
-            alt="Hive app icon"
-            class="hero__app-icon animate-in"
-            width="96"
-            height="96"
-            style="--delay: 0ms"
-          >
-          <p class="label hero__label animate-in" style="--delay: 100ms">macOS · AI Agent Orchestration</p>
-          <h1 id="hero-headline" class="display-xl hero__headline animate-in" style="--delay: 200ms">
-            Your agents,<br>orchestrated.
-          </h1>
-          <p class="body-lg hero__sub animate-in" style="--delay: 350ms">
-            Hive coordinates multiple AI agents so complex tasks get&nbsp;done —
-            without you managing every&nbsp;step.
-          </p>
-          <div class="hero__cta animate-in" style="--delay: 500ms">
-            <a href="https://github.com/pauljrob/hive/releases" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Download for Mac</a>
-            <a href="https://github.com/pauljrob/hive" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-          <p class="mono hero__trust animate-in" style="--delay: 650ms">
-            Free and open source · macOS 14 Sonoma or later · No account required
-          </p>
-        </div>
+      <!-- Hex grid background -->
+      <div class="hex-grid" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hexPattern" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+              <path d="M30 2 L56 17 L56 35 L30 50 L4 35 L4 17 Z" fill="none" stroke="rgba(255,255,255,0.055)" stroke-width="0.75"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hexPattern)" />
+        </svg>
       </div>
-    </section>
 
-    <!-- STATS STRIP -->
-    <section class="stats" aria-label="Key capabilities">
-      <div class="container stats__inner">
-        <div class="stats__item">
-          <span class="stats__number">1</span>
-          <span class="stats__label">Native macOS app</span>
+      <!-- Ambient radial glow behind icon -->
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-content">
+
+        <!-- App icon -->
+        <div class="hero-icon-wrap" data-animate="hero-0">
+          <div class="icon-ambient" aria-hidden="true"></div>
+          <img src="assets/icon-512.png" alt="Hive app icon" class="hero-icon" width="72" height="72" />
         </div>
-        <div class="stats__divider" aria-hidden="true"></div>
-        <div class="stats__item">
-          <span class="stats__number">∞</span>
-          <span class="stats__label">Models: Claude, GPT, Gemini, local</span>
+
+        <!-- Version badge -->
+        <div class="hero-badge" data-animate="hero-1">
+          <span>v0.1 beta · macOS</span>
         </div>
-        <div class="stats__divider" aria-hidden="true"></div>
-        <div class="stats__item">
-          <span class="stats__number">0</span>
-          <span class="stats__label">Babysitting required</span>
-        </div>
-      </div>
-    </section>
 
-    <!-- FEATURES -->
-    <section class="features" aria-labelledby="features-headline">
-      <div class="container">
-        <p class="label features__label">Capabilities</p>
-        <h2 id="features-headline" class="display-lg features__headline">
-          Everything your agents<br>need to work as one.
-        </h2>
-        <div class="features__grid">
+        <!-- Headline -->
+        <h1 class="hero-headline" data-animate="hero-2">
+          <em>Orchestrate your</em>
+          <span class="accent">AI workforce.</span>
+        </h1>
 
-          <article class="card reveal" data-reveal>
-            <div class="card__icon" aria-hidden="true">
-              <!-- Branching pipeline icon -->
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="6" cy="16" r="3.5" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="26" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="26" cy="24" r="3.5" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M9.5 16H16L16 8H22.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M16 16L16 24H22.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <p class="label card__tag">Core</p>
-            <h3 class="card__title">Queen-led orchestration</h3>
-            <p class="card__body">A Queen drone writes the plan, assigns tasks to the right agents, and reviews their output — you set the goal, agents handle execution.</p>
-          </article>
-
-          <article class="card reveal" data-reveal>
-            <div class="card__icon" aria-hidden="true">
-              <!-- Hexagon comb icon -->
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 3L27 9.5V22.5L16 29L5 22.5V9.5L16 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                <circle cx="16" cy="16" r="3" fill="currentColor" opacity="0.6"/>
-              </svg>
-            </div>
-            <p class="label card__tag">Architecture</p>
-            <h3 class="card__title">Persistent colonies</h3>
-            <p class="card__body">Named, configurable colonies with a visual org graph (Comb). Drones run in parallel or sequence — the relationship graph <em>is</em> your workflow.</p>
-          </article>
-
-          <article class="card reveal" data-reveal>
-            <div class="card__icon" aria-hidden="true">
-              <!-- Lock/privilege icon -->
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="7" y="15" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M11 15V10.5C11 7.46 13.24 5 16 5C18.76 5 21 7.46 21 10.5V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="16" cy="21.5" r="2" fill="currentColor" opacity="0.7"/>
-              </svg>
-            </div>
-            <p class="label card__tag">Security</p>
-            <h3 class="card__title">Builder privilege model</h3>
-            <p class="card__body">Least-privilege by design. Only Builder drones get filesystem and command access. Planners, reviewers, and PMs stay sandboxed — no accidental writes.</p>
-          </article>
-
-          <article class="card reveal" data-reveal>
-            <div class="card__icon" aria-hidden="true">
-              <!-- Pipeline chain icon -->
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="13" width="7" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
-                <rect x="12.5" y="13" width="7" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
-                <rect x="23" y="13" width="7" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M9 16H12.5M19.5 16H23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M21 13.5L23.5 16L21 18.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <p class="label card__tag">Workflow</p>
-            <h3 class="card__title">Chained task pipelines</h3>
-            <p class="card__body">Connect agent outputs into multi-step pipelines with <code>delegates-to</code>, <code>collaborates-with</code>, and <code>reviews-for</code> relationships. What takes hours becomes one run.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="how" aria-labelledby="how-headline">
-      <div class="container how__inner">
-        <p class="label how__label">How it works</p>
-        <h2 id="how-headline" class="display-lg how__headline">Three steps.<br>Any task.</h2>
-
-        <div class="how__steps">
-          <div class="how__step reveal" data-reveal>
-            <span class="how__num" aria-hidden="true">01</span>
-            <div class="how__step-content">
-              <h3 class="how__step-title">Define your colony</h3>
-              <p class="how__step-body">Give each drone a name, role, persona, and set of tools. Connect them in the Comb graph. Designate Builders with filesystem access — everyone else stays sandboxed.</p>
-            </div>
-          </div>
-          <div class="how__connector" aria-hidden="true"></div>
-          <div class="how__step reveal" data-reveal>
-            <span class="how__num" aria-hidden="true">02</span>
-            <div class="how__step-content">
-              <h3 class="how__step-title">Hit play on an issue</h3>
-              <p class="how__step-body">Assign a Linear issue and press Play. The Queen reads the task, writes a plan, and dispatches work to the right drones — in parallel or sequence based on your Comb graph.</p>
-            </div>
-          </div>
-          <div class="how__connector" aria-hidden="true"></div>
-          <div class="how__step reveal" data-reveal>
-            <span class="how__num" aria-hidden="true">03</span>
-            <div class="how__step-content">
-              <h3 class="how__step-title">Review and iterate</h3>
-              <p class="how__step-body">Watch the activity feed in real time. Each drone posts output as a Linear comment. The Queen reviews, approves, or loops back. Examine, export, ship.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- APP PREVIEW (terminal animation) -->
-    <section class="preview" aria-label="App preview">
-      <div class="container">
-        <div class="preview__frame reveal" data-reveal>
-          <div class="preview__chrome" aria-hidden="true">
-            <span class="preview__dot preview__dot--red"></span>
-            <span class="preview__dot preview__dot--yellow"></span>
-            <span class="preview__dot preview__dot--green"></span>
-            <span class="preview__chrome-title">Hive — Feed</span>
-          </div>
-          <div class="preview__terminal" role="log" aria-label="Live agent activity feed">
-            <div class="terminal__lines" id="terminalLines">
-              <div class="terminal__line tl-0"><span class="tl-dim">[2s ago]</span> <span class="tl-queen">[queen]</span> <span class="tl-arrow">→</span> <span class="tl-text">reading issue PAU-210: "Create new landing page"</span></div>
-              <div class="terminal__line tl-1"><span class="tl-dim">[1s ago]</span> <span class="tl-queen">[queen]</span> <span class="tl-arrow">→</span> <span class="tl-text">dispatching plan to colony</span></div>
-              <div class="terminal__line tl-2"><span class="tl-dim">[now]  </span> <span class="tl-drone">[product-manager]</span> <span class="tl-arrow">→</span> <span class="tl-text">starting content brief extraction</span></div>
-              <div class="terminal__line tl-3"><span class="tl-dim">[now]  </span> <span class="tl-drone">[ux-designer]</span> <span class="tl-arrow">→</span> <span class="tl-text">starting design spec · waiting on PM output</span></div>
-              <div class="terminal__line tl-4"><span class="tl-dim">[now]  </span> <span class="tl-drone">[product-manager]</span> <span class="tl-arrow">→</span> <span class="tl-text">done. 2,341 tokens. returning to queen.</span></div>
-              <div class="terminal__line tl-5"><span class="tl-dim">[now]  </span> <span class="tl-drone">[ux-designer]</span> <span class="tl-arrow">→</span> <span class="tl-text">received PM output. generating design spec.</span></div>
-              <div class="terminal__line tl-6"><span class="tl-dim">[now]  </span> <span class="tl-builder">[engineer]</span> <span class="tl-arrow">→</span> <span class="tl-text">builder · fetching icon from pauljrob/hive</span></div>
-              <div class="terminal__line tl-7"><span class="tl-dim">[now]  </span> <span class="tl-builder">[engineer]</span> <span class="tl-arrow">→</span> <span class="tl-text">writing index.html · style.css · main.js</span></div>
-              <div class="terminal__line tl-8"><span class="tl-dim">[now]  </span> <span class="tl-drone">[qa-expert]</span> <span class="tl-arrow">→</span> <span class="tl-text">running lighthouse audit · score: 97</span></div>
-              <div class="terminal__line tl-9"><span class="tl-dim">[now]  </span> <span class="tl-queen">[queen]</span> <span class="tl-arrow">→</span> <span class="tl-text">pipeline complete · 5 drones · 18,432 tokens · $0.23</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA BANNER -->
-    <section class="cta-banner" aria-labelledby="cta-headline">
-      <div class="cta-banner__glow" aria-hidden="true"></div>
-      <div class="container cta-banner__inner">
-        <h2 id="cta-headline" class="display-lg cta-banner__headline reveal" data-reveal>
-          Ready to run<br>a colony?
-        </h2>
-        <p class="body-lg cta-banner__sub reveal" data-reveal>
-          Free and open source. macOS 14 Sonoma or later.
+        <!-- Subheadline -->
+        <p class="hero-sub" data-animate="hero-3">
+          Hive lets you deploy colonies of specialized AI agents that work together —
+          automatically routing tasks, managing context, and shipping results while
+          you focus on what matters.
         </p>
-        <div class="cta-banner__actions reveal" data-reveal>
-          <a href="https://github.com/pauljrob/hive/releases" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">Download for Mac</a>
+
+        <!-- CTAs -->
+        <div class="hero-ctas" data-animate="hero-4">
+          <a href="#download" class="btn btn-primary">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download for macOS
+          </a>
+          <a href="https://github.com/pauljrob/hive" target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
         </div>
-        <a href="https://github.com/pauljrob/hive" class="cta-banner__github reveal mono" data-reveal target="_blank" rel="noopener noreferrer">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-          </svg>
-          pauljrob/hive
-        </a>
+
       </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="1 1 6 7 11 1"/>
+        </svg>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FEATURES
+    ═══════════════════════════════════════════ -->
+    <section id="features" class="section-features" aria-label="Features">
+      <div class="container">
+
+        <h2 class="section-headline">Everything a colony needs</h2>
+
+        <div class="feature-grid">
+
+          <article class="feature-card" data-scroll-animate>
+            <svg class="feature-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+            </svg>
+            <span class="feature-label">Orchestration</span>
+            <h3 class="feature-title">Queen-driven coordination</h3>
+            <p class="feature-body">One orchestrator agent reads your goal and assigns specialized workers — no manual wiring required. Describe the outcome; the colony figures out the path.</p>
+          </article>
+
+          <article class="feature-card" data-scroll-animate>
+            <svg class="feature-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="6" y1="3" x2="6" y2="15"/><path d="M18 3v12"/><path d="M6 15a4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0 4 4"/>
+            </svg>
+            <span class="feature-label">Context</span>
+            <h3 class="feature-title">Shared workspace memory</h3>
+            <p class="feature-body">Every agent in a colony reads and writes to a shared workspace. Context flows automatically between tasks — no copy-pasting, no lost state.</p>
+          </article>
+
+          <article class="feature-card" data-scroll-animate>
+            <svg class="feature-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
+            <span class="feature-label">Interface</span>
+            <h3 class="feature-title">macOS-native controls</h3>
+            <p class="feature-body">Launch, pause, and inspect colonies from the menu bar. Full output streaming, live agent status, no browser required. Built for the Mac, not ported to it.</p>
+          </article>
+
+          <article class="feature-card" data-scroll-animate>
+            <svg class="feature-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            <span class="feature-label">Speed</span>
+            <h3 class="feature-title">Parallel execution</h3>
+            <p class="feature-body">Workers run concurrently. Complex multi-step workflows finish in the time it takes to complete one task sequentially. Parallelism without orchestration overhead.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         ARCHITECTURE
+    ═══════════════════════════════════════════ -->
+    <section id="how-it-works" class="section-arch" aria-label="How it works">
+      <div class="container arch-layout">
+
+        <div class="arch-text">
+          <span class="eyebrow">How it works</span>
+          <h2 class="section-headline left">A colony that thinks</h2>
+          <p class="arch-body">
+            You describe a goal. The Queen agent breaks it into tasks and dispatches
+            specialized Workers — each focused, each fast. Results flow back
+            automatically, assembled into the output you asked for.
+          </p>
+          <p class="arch-body">
+            No pipelines to configure. No chains to debug. Just a goal and a colony
+            that gets it done.
+          </p>
+        </div>
+
+        <div class="arch-diagram" aria-label="Colony architecture diagram showing Queen coordinating Worker agents" role="img">
+          <svg id="colony-svg" viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Spoke lines (drawn via animation) -->
+            <line class="spoke" x1="190" y1="170" x2="90"  y2="68"  stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+            <line class="spoke" x1="190" y1="170" x2="310" y2="80"  stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+            <line class="spoke" x1="190" y1="170" x2="70"  y2="272" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+            <line class="spoke" x1="190" y1="170" x2="310" y2="272" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+
+            <!-- Queen node (octagon) -->
+            <g class="queen-node">
+              <polygon points="190,140 216,148 224,170 216,192 190,200 164,192 156,170 164,148"
+                fill="rgba(232,168,48,0.10)" stroke="#E8A830" stroke-width="1.5"/>
+              <text x="190" y="167" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="9" fill="#E8A830" letter-spacing="0.08em" font-weight="500">QUEEN</text>
+              <text x="190" y="179" text-anchor="middle" font-family="'Geist Sans', sans-serif" font-size="8" fill="rgba(232,168,48,0.6)">orchestrator</text>
+            </g>
+
+            <!-- Worker nodes -->
+            <g class="worker-node" data-delay="0">
+              <rect x="44" y="40" width="92" height="56" rx="8" fill="#18181F" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <circle cx="120" cy="48" r="4" fill="#3ECF68"/>
+              <text x="90" y="64" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="8" fill="rgba(139,137,132,0.8)" letter-spacing="0.08em">RESEARCHER</text>
+              <text x="90" y="79" text-anchor="middle" font-family="'Geist Sans', sans-serif" font-size="10" fill="#ECEAE3">Research</text>
+            </g>
+
+            <g class="worker-node" data-delay="1">
+              <rect x="264" y="40" width="92" height="56" rx="8" fill="#18181F" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <circle cx="340" cy="48" r="4" fill="#3ECF68"/>
+              <text x="310" y="64" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="8" fill="rgba(139,137,132,0.8)" letter-spacing="0.08em">WRITER</text>
+              <text x="310" y="79" text-anchor="middle" font-family="'Geist Sans', sans-serif" font-size="10" fill="#ECEAE3">Write</text>
+            </g>
+
+            <g class="worker-node" data-delay="2">
+              <rect x="24" y="244" width="92" height="56" rx="8" fill="#18181F" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <circle cx="100" cy="252" r="4" fill="#3ECF68"/>
+              <text x="70" y="268" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="8" fill="rgba(139,137,132,0.8)" letter-spacing="0.08em">CODER</text>
+              <text x="70" y="283" text-anchor="middle" font-family="'Geist Sans', sans-serif" font-size="10" fill="#ECEAE3">Code</text>
+            </g>
+
+            <g class="worker-node" data-delay="3">
+              <rect x="264" y="244" width="92" height="56" rx="8" fill="#18181F" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <circle cx="340" cy="252" r="4" fill="#3ECF68"/>
+              <text x="310" y="268" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="8" fill="rgba(139,137,132,0.8)" letter-spacing="0.08em">REVIEWER</text>
+              <text x="310" y="283" text-anchor="middle" font-family="'Geist Sans', sans-serif" font-size="10" fill="#ECEAE3">Review</text>
+            </g>
+
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TERMINAL PREVIEW
+    ═══════════════════════════════════════════ -->
+    <section id="terminal" class="section-terminal" aria-label="Terminal preview">
+      <div class="container">
+
+        <div class="terminal-window" data-scroll-animate>
+          <!-- Window chrome -->
+          <div class="terminal-chrome">
+            <div class="chrome-dots" aria-hidden="true">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="chrome-title">hive run colony.yaml</span>
+            <div class="chrome-spacer"></div>
+          </div>
+
+          <!-- YAML content -->
+          <div class="terminal-body">
+            <pre class="yaml-block"><code><span class="y-comment"># colony.yaml — research and summarize task</span>
+<span class="y-key">name</span><span class="y-punct">:</span> <span class="y-str">research-brief</span>
+
+<span class="y-key">queen</span><span class="y-punct">:</span>
+  <span class="y-key">model</span><span class="y-punct">:</span> <span class="y-val">claude-opus-4-5</span>
+  <span class="y-key">goal</span><span class="y-punct">:</span> <span class="y-str">&gt;
+    Research the competitive landscape for AI agent
+    frameworks and produce a two-page executive brief.</span>
+
+<span class="y-key">workers</span><span class="y-punct">:</span>
+  <span class="y-punct">-</span> <span class="y-key">name</span><span class="y-punct">:</span> <span class="y-str">researcher</span>
+    <span class="y-key">model</span><span class="y-punct">:</span> <span class="y-val">claude-sonnet-4-6</span>
+    <span class="y-key">tools</span><span class="y-punct">:</span> <span class="y-val">[web_search, read_file]</span>
+  <span class="y-punct">-</span> <span class="y-key">name</span><span class="y-punct">:</span> <span class="y-str">writer</span>
+    <span class="y-key">model</span><span class="y-punct">:</span> <span class="y-val">claude-sonnet-4-6</span>
+    <span class="y-key">tools</span><span class="y-punct">:</span> <span class="y-val">[write_file]</span></code></pre>
+
+            <!-- Log output -->
+            <div class="terminal-log" id="termLog">
+              <div class="log-line" data-line="0"><span class="log-ts">22:04:01</span> <span class="log-ok">✓</span> <span class="log-msg">colony loaded: <em>research-brief</em></span></div>
+              <div class="log-line" data-line="1"><span class="log-ts">22:04:01</span> <span class="log-info">→</span> <span class="log-msg">queen dispatching to 2 workers</span></div>
+              <div class="log-line" data-line="2"><span class="log-ts">22:04:02</span> <span class="log-ok">✓</span> <span class="log-msg">worker <em>researcher</em> started</span></div>
+              <div class="log-line" data-line="3"><span class="log-ts">22:04:02</span> <span class="log-ok">✓</span> <span class="log-msg">worker <em>writer</em> started</span></div>
+              <div class="log-line" data-line="4"><span class="log-ts">22:04:08</span> <span class="log-info">→</span> <span class="log-msg">researcher: web_search("AI agent frameworks 2025")</span></div>
+              <div class="log-line" data-line="5"><span class="log-ts">22:04:12</span> <span class="log-info">→</span> <span class="log-msg">researcher: web_search("LangChain vs CrewAI comparison")</span></div>
+              <div class="log-line" data-line="6"><span class="log-ts">22:04:19</span> <span class="log-ok">✓</span> <span class="log-msg">researcher: context written to workspace</span></div>
+              <div class="log-line" data-line="7"><span class="log-ts">22:04:19</span> <span class="log-info">→</span> <span class="log-msg">writer: reading workspace context</span></div>
+              <div class="log-line" data-line="8"><span class="log-ts">22:04:31</span> <span class="log-ok">✓</span> <span class="log-msg">writer: brief.md written (1,847 words)</span></div>
+              <div class="log-line" data-line="9"><span class="log-ts">22:04:31</span> <span class="log-ok">✓</span> <span class="log-msg">colony complete · 30s · 2 workers</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         DOWNLOAD CTA
+    ═══════════════════════════════════════════ -->
+    <section id="download" class="section-cta" aria-label="Download">
+
+      <div class="cta-hex" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hexPatternCta" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+              <path d="M30 2 L56 17 L56 35 L30 50 L4 35 L4 17 Z" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.75"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hexPatternCta)" />
+        </svg>
+      </div>
+
+      <div class="cta-glow" aria-hidden="true"></div>
+
+      <div class="cta-content" data-scroll-animate>
+        <h2 class="cta-headline"><em>Your agents are waiting.</em></h2>
+        <p class="cta-sub">Hive is in early access for macOS. Free to try.</p>
+        <a href="https://github.com/pauljrob/hive/releases" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download for macOS
+        </a>
+        <p class="cta-fine">macOS 13 Ventura or later · Apple Silicon and Intel</p>
+      </div>
+
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer" aria-label="Site footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <img src="assets/icon.png" alt="Hive" class="footer__icon" width="20" height="20">
-        <span class="footer__wordmark">HIVE</span>
-      </div>
-      <div class="footer__links">
-        <a href="https://github.com/pauljrob/hive" class="footer__link" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-          </svg>
-          GitHub
-        </a>
-        <span class="footer__sep" aria-hidden="true">·</span>
-        <span class="footer__copy">© 2026</span>
-      </div>
-    </div>
-    <div class="footer__sub">
-      <span class="mono">Made with Hive · macOS 14+</span>
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+
+      <a href="#" class="footer-brand" aria-label="Hive home">
+        <img src="assets/icon-512.png" alt="" class="footer-icon" width="18" height="18" aria-hidden="true" />
+        <span class="footer-wordmark">Hive</span>
+      </a>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="https://github.com/pauljrob/hive" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/pauljrob/hive/issues" target="_blank" rel="noopener">Issues</a>
+        <a href="https://github.com/pauljrob/hive/releases" target="_blank" rel="noopener">Releases</a>
+      </nav>
+
+      <p class="footer-credit">Built with Hive</p>
+
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
