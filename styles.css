@@ -36,9 +36,9 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   --code-str:       #7EC8A4;
 
   /* Type scale */
-  --font-display:   'Cormorant', Georgia, serif;
-  --font-ui:        'Geist', 'Helvetica Neue', sans-serif;
-  --font-mono:      'Geist Mono', 'Courier New', monospace;
+  --font-display:   'Syne', 'Helvetica Neue', sans-serif;
+  --font-ui:        'Figtree', 'Helvetica Neue', sans-serif;
+  --font-mono:      'JetBrains Mono', 'Courier New', monospace;
 
   /* Spacing */
   --s1:  4px;
@@ -63,7 +63,7 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-ui);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.65;
   overflow-x: hidden;
@@ -345,7 +345,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(44px, 7vw, 80px);
   line-height: 1.05;
   letter-spacing: -0.03em;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: var(--s6);
   display: flex;
   flex-direction: column;
@@ -353,7 +353,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-headline em {
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -370,7 +370,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-secondary);
   max-width: 560px;
   margin-bottom: var(--s8);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* CTAs */
@@ -526,7 +526,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 14px;
   line-height: 1.65;
   color: var(--text-secondary);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* ── Scroll animate base state ────────────────────────── */
@@ -588,7 +588,7 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.7;
   color: var(--text-secondary);
   margin-top: var(--s4);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* SVG Diagram */
@@ -786,8 +786,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(36px, 5vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.03em;
-  font-weight: 700;
-  font-style: italic;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: var(--s4);
 }
@@ -796,7 +795,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 16px;
   color: var(--text-secondary);
   margin-bottom: var(--s8);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .cta-fine {
