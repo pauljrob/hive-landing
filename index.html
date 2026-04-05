@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080809">
+  <meta name="description" content="Hive — Native macOS app for orchestrating multiple AI agents that work together as a team.">
+  <title>Hive — AI Agent Orchestration for macOS</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#" class="nav__brand" aria-label="Hive home">
+        <img src="assets/icon.png" alt="" class="nav__icon" width="28" height="28" aria-hidden="true">
+        <span class="nav__wordmark">HIVE</span>
+      </a>
+      <div class="nav__actions">
+        <a href="https://github.com/pauljrob/hive" class="nav__link nav__link--github" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/pauljrob/hive/releases" class="btn btn--outline btn--sm" target="_blank" rel="noopener noreferrer">Download</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__static-fallback" aria-hidden="true"></div>
+
+      <div class="container hero__content">
+        <div class="hero__center">
+          <img
+            src="assets/icon.png"
+            alt="Hive app icon"
+            class="hero__app-icon animate-in"
+            width="96"
+            height="96"
+            style="--delay: 0ms"
+          >
+          <p class="label hero__label animate-in" style="--delay: 100ms">macOS · AI Agent Orchestration</p>
+          <h1 id="hero-headline" class="display-xl hero__headline animate-in" style="--delay: 200ms">
+            Your agents,<br>orchestrated.
+          </h1>
+          <p class="body-lg hero__sub animate-in" style="--delay: 350ms">
+            Hive coordinates multiple AI agents so complex tasks get&nbsp;done —
+            without you managing every&nbsp;step.
+          </p>
+          <div class="hero__cta animate-in" style="--delay: 500ms">
+            <a href="https://github.com/pauljrob/hive/releases" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Download for Mac</a>
+            <a href="https://github.com/pauljrob/hive" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          </div>
+          <p class="mono hero__trust animate-in" style="--delay: 650ms">
+            Free and open source · macOS 14 Sonoma or later · No account required
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="stats" aria-label="Key capabilities">
+      <div class="container stats__inner">
+        <div class="stats__item">
+          <span class="stats__number">1</span>
+          <span class="stats__label">Native macOS app</span>
+        </div>
+        <div class="stats__divider" aria-hidden="true"></div>
+        <div class="stats__item">
+          <span class="stats__number">∞</span>
+          <span class="stats__label">Models: Claude, GPT, Gemini, local</span>
+        </div>
+        <div class="stats__divider" aria-hidden="true"></div>
+        <div class="stats__item">
+          <span class="stats__number">0</span>
+          <span class="stats__label">Babysitting required</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" aria-labelledby="features-headline">
+      <div class="container">
+        <p class="label features__label">Capabilities</p>
+        <h2 id="features-headline" class="display-lg features__headline">
+          Everything your agents<br>need to work as one.
+        </h2>
+        <div class="features__grid">
+
+          <article class="card reveal" data-reveal>
+            <div class="card__icon" aria-hidden="true">
+              <!-- Branching pipeline icon -->
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="6" cy="16" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="26" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="26" cy="24" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9.5 16H16L16 8H22.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M16 16L16 24H22.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="label card__tag">Core</p>
+            <h3 class="card__title">Queen-led orchestration</h3>
+            <p class="card__body">A Queen drone writes the plan, assigns tasks to the right agents, and reviews their output — you set the goal, agents handle execution.</p>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__icon" aria-hidden="true">
+              <!-- Hexagon comb icon -->
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 3L27 9.5V22.5L16 29L5 22.5V9.5L16 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <circle cx="16" cy="16" r="3" fill="currentColor" opacity="0.6"/>
+              </svg>
+            </div>
+            <p class="label card__tag">Architecture</p>
+            <h3 class="card__title">Persistent colonies</h3>
+            <p class="card__body">Named, configurable colonies with a visual org graph (Comb). Drones run in parallel or sequence — the relationship graph <em>is</em> your workflow.</p>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__icon" aria-hidden="true">
+              <!-- Lock/privilege icon -->
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="7" y="15" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 15V10.5C11 7.46 13.24 5 16 5C18.76 5 21 7.46 21 10.5V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="16" cy="21.5" r="2" fill="currentColor" opacity="0.7"/>
+              </svg>
+            </div>
+            <p class="label card__tag">Security</p>
+            <h3 class="card__title">Builder privilege model</h3>
+            <p class="card__body">Least-privilege by design. Only Builder drones get filesystem and command access. Planners, reviewers, and PMs stay sandboxed — no accidental writes.</p>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__icon" aria-hidden="true">
+              <!-- Pipeline chain icon -->
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="13" width="7" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="12.5" y="13" width="7" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="23" y="13" width="7" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9 16H12.5M19.5 16H23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M21 13.5L23.5 16L21 18.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="label card__tag">Workflow</p>
+            <h3 class="card__title">Chained task pipelines</h3>
+            <p class="card__body">Connect agent outputs into multi-step pipelines with <code>delegates-to</code>, <code>collaborates-with</code>, and <code>reviews-for</code> relationships. What takes hours becomes one run.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how" aria-labelledby="how-headline">
+      <div class="container how__inner">
+        <p class="label how__label">How it works</p>
+        <h2 id="how-headline" class="display-lg how__headline">Three steps.<br>Any task.</h2>
+
+        <div class="how__steps">
+          <div class="how__step reveal" data-reveal>
+            <span class="how__num" aria-hidden="true">01</span>
+            <div class="how__step-content">
+              <h3 class="how__step-title">Define your colony</h3>
+              <p class="how__step-body">Give each drone a name, role, persona, and set of tools. Connect them in the Comb graph. Designate Builders with filesystem access — everyone else stays sandboxed.</p>
+            </div>
+          </div>
+          <div class="how__connector" aria-hidden="true"></div>
+          <div class="how__step reveal" data-reveal>
+            <span class="how__num" aria-hidden="true">02</span>
+            <div class="how__step-content">
+              <h3 class="how__step-title">Hit play on an issue</h3>
+              <p class="how__step-body">Assign a Linear issue and press Play. The Queen reads the task, writes a plan, and dispatches work to the right drones — in parallel or sequence based on your Comb graph.</p>
+            </div>
+          </div>
+          <div class="how__connector" aria-hidden="true"></div>
+          <div class="how__step reveal" data-reveal>
+            <span class="how__num" aria-hidden="true">03</span>
+            <div class="how__step-content">
+              <h3 class="how__step-title">Review and iterate</h3>
+              <p class="how__step-body">Watch the activity feed in real time. Each drone posts output as a Linear comment. The Queen reviews, approves, or loops back. Examine, export, ship.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APP PREVIEW (terminal animation) -->
+    <section class="preview" aria-label="App preview">
+      <div class="container">
+        <div class="preview__frame reveal" data-reveal>
+          <div class="preview__chrome" aria-hidden="true">
+            <span class="preview__dot preview__dot--red"></span>
+            <span class="preview__dot preview__dot--yellow"></span>
+            <span class="preview__dot preview__dot--green"></span>
+            <span class="preview__chrome-title">Hive — Feed</span>
+          </div>
+          <div class="preview__terminal" role="log" aria-label="Live agent activity feed">
+            <div class="terminal__lines" id="terminalLines">
+              <div class="terminal__line tl-0"><span class="tl-dim">[2s ago]</span> <span class="tl-queen">[queen]</span> <span class="tl-arrow">→</span> <span class="tl-text">reading issue PAU-210: "Create new landing page"</span></div>
+              <div class="terminal__line tl-1"><span class="tl-dim">[1s ago]</span> <span class="tl-queen">[queen]</span> <span class="tl-arrow">→</span> <span class="tl-text">dispatching plan to colony</span></div>
+              <div class="terminal__line tl-2"><span class="tl-dim">[now]  </span> <span class="tl-drone">[product-manager]</span> <span class="tl-arrow">→</span> <span class="tl-text">starting content brief extraction</span></div>
+              <div class="terminal__line tl-3"><span class="tl-dim">[now]  </span> <span class="tl-drone">[ux-designer]</span> <span class="tl-arrow">→</span> <span class="tl-text">starting design spec · waiting on PM output</span></div>
+              <div class="terminal__line tl-4"><span class="tl-dim">[now]  </span> <span class="tl-drone">[product-manager]</span> <span class="tl-arrow">→</span> <span class="tl-text">done. 2,341 tokens. returning to queen.</span></div>
+              <div class="terminal__line tl-5"><span class="tl-dim">[now]  </span> <span class="tl-drone">[ux-designer]</span> <span class="tl-arrow">→</span> <span class="tl-text">received PM output. generating design spec.</span></div>
+              <div class="terminal__line tl-6"><span class="tl-dim">[now]  </span> <span class="tl-builder">[engineer]</span> <span class="tl-arrow">→</span> <span class="tl-text">builder · fetching icon from pauljrob/hive</span></div>
+              <div class="terminal__line tl-7"><span class="tl-dim">[now]  </span> <span class="tl-builder">[engineer]</span> <span class="tl-arrow">→</span> <span class="tl-text">writing index.html · style.css · main.js</span></div>
+              <div class="terminal__line tl-8"><span class="tl-dim">[now]  </span> <span class="tl-drone">[qa-expert]</span> <span class="tl-arrow">→</span> <span class="tl-text">running lighthouse audit · score: 97</span></div>
+              <div class="terminal__line tl-9"><span class="tl-dim">[now]  </span> <span class="tl-queen">[queen]</span> <span class="tl-arrow">→</span> <span class="tl-text">pipeline complete · 5 drones · 18,432 tokens · $0.23</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner" aria-labelledby="cta-headline">
+      <div class="cta-banner__glow" aria-hidden="true"></div>
+      <div class="container cta-banner__inner">
+        <h2 id="cta-headline" class="display-lg cta-banner__headline reveal" data-reveal>
+          Ready to run<br>a colony?
+        </h2>
+        <p class="body-lg cta-banner__sub reveal" data-reveal>
+          Free and open source. macOS 14 Sonoma or later.
+        </p>
+        <div class="cta-banner__actions reveal" data-reveal>
+          <a href="https://github.com/pauljrob/hive/releases" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">Download for Mac</a>
+        </div>
+        <a href="https://github.com/pauljrob/hive" class="cta-banner__github reveal mono" data-reveal target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          pauljrob/hive
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/icon.png" alt="Hive" class="footer__icon" width="20" height="20">
+        <span class="footer__wordmark">HIVE</span>
+      </div>
+      <div class="footer__links">
+        <a href="https://github.com/pauljrob/hive" class="footer__link" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub
+        </a>
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <span class="footer__copy">© 2026</span>
+      </div>
+    </div>
+    <div class="footer__sub">
+      <span class="mono">Made with Hive · macOS 14+</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
